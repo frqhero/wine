@@ -1,7 +1,9 @@
 from http.server import HTTPServer, SimpleHTTPRequestHandler
-from jinja2 import Environment, FileSystemLoader, select_autoescape
 import datetime
 import re
+from collections import defaultdict
+
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 import pandas
 
 env = Environment(loader=FileSystemLoader('.'),
@@ -22,11 +24,19 @@ else:
     word = 'лет'
 
 company_string = f'{company_age} {word}'
-excel_data_df = pandas.read_excel('wine.xlsx', sheet_name='Лист1')
+excel_data_df = pandas.read_excel(
+    'wine2.xlsx', 
+    sheet_name='Лист1',
+    keep_default_na=False
+    ).to_dict(orient='records')
+res = defaultdict(list)
+for excel_line in excel_data_df:
+    category = excel_line['Категория']
+    res[category].append(excel_line)
 
 rendered_page = template.render(
     company_string=company_string,
-    excel_data=excel_data_df.to_dict(orient='records')
+    categories=res
     )
 
 with open('index.html', 'w', encoding="utf8") as file:
