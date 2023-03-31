@@ -5,7 +5,7 @@ import pandas
 
 
 excel_data_df = pandas.read_excel(
-    'wine2.xlsx', 
+    'wine3.xlsx',
     sheet_name='Лист1',
     keep_default_na=False
     ).to_dict(orient='records')
