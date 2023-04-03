@@ -3,3 +3,6 @@ env/
 .DS_Store
 venv/
 .idea
+*.pyc
+*.pyd
+*.pyo
