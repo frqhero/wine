@@ -19,13 +19,13 @@ def get_word(company_age):
 
 
 def get_excel_data():
-    excel_data_df = pandas.read_excel(
+    wines = pandas.read_excel(
         'wine3.xlsx',
         sheet_name='Лист1',
         keep_default_na=False
     ).to_dict(orient='records')
     res = defaultdict(list)
-    for excel_line in excel_data_df:
+    for excel_line in wines:
         category = excel_line['Категория']
         res[category].append(excel_line)
     return res
@@ -44,11 +44,11 @@ def main():
     company_age = str(current_year - foundation_date)
     word = get_word(company_age)
     company_string = f'{company_age} {word}'
-    excel_data = get_excel_data()
+    wine_entries = get_excel_data()
 
     rendered_page = template.render(
         company_string=company_string,
-        categories=excel_data
+        categories=wine_entries
     )
 
     with open('index.html', 'w', encoding="utf8") as file:
