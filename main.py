@@ -40,7 +40,8 @@ def main():
     template = env.get_template('template.html')
 
     current_year = datetime.date.today().year
-    company_age = str(current_year - 1920)
+    foundation_date = 1920
+    company_age = str(current_year - foundation_date)
     word = get_word(company_age)
     company_string = f'{company_age} {word}'
     excel_data = get_excel_data()
