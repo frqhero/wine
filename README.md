@@ -5,6 +5,18 @@
 ## Запуск
 
 - Скачайте код
+- Установите venv
+```
+python3 -m venv venv
+```
+- Активируйте venv
+```
+source venv/bin/activate
+```
+- Установите зависимости
+```
+pip install -r requirements.txt
+```
 - Создайте в корне .env файл
 ```
 echo "WINE_TABLE=wine3.xlsx" > .env
