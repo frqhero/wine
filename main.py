@@ -1,8 +1,10 @@
 from collections import defaultdict
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import datetime
+import os
 import re
 
+from dotenv import load_dotenv
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import pandas
 
@@ -19,8 +21,9 @@ def get_word(company_age):
 
 
 def get_wine_entries():
+    wine_table = os.getenv('WINE_TABLE')
     wines = pandas.read_excel(
-        'wine3.xlsx',
+        wine_table,
         sheet_name='Лист1',
         keep_default_na=False
     ).to_dict(orient='records')
@@ -59,4 +62,5 @@ def main():
 
 
 if __name__ == '__main__':
+    load_dotenv()
     main()
