@@ -116,21 +116,21 @@
             </p>
           </div>
         </div>
-        {% for title, category in categories.items() %}
+        {% for category_title, beverages_list in wine_entries.items() %}
           <div class="col-12 section-title text-center mb-5">
-            <h2 class="d-block">{{title}}</h2>
+            <h2 class="d-block">{{category_title}}</h2>
           </div>
           <div class="row">
-            {% for excel_entry in category %}
+            {% for beverage_dict in beverages_list %}
               <div class="col-lg-4 mb-5 col-md-6">
                 <div class="wine_v_1 text-center pb-4 pt-5">
-                  <img src="images/{{excel_entry.Картинка}}" alt="Image" class="img-fluid">
-                  {% if excel_entry.Акция %}<img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">{% endif %}
+                  <img src="images/{{beverage_dict.Картинка}}" alt="Image" class="img-fluid">
+                  {% if beverage_dict.Акция %}<img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">{% endif %}
                   <div>
-                    <h3 class="heading mt-3 mb-3 text-dark">{{excel_entry.Название}}</h3>
+                    <h3 class="heading mt-3 mb-3 text-dark">{{beverage_dict.Название}}</h3>
                     <p>
-                      {% if excel_entry.Сорт %}Сорт винограда - {{excel_entry.Сорт}}<br/>{% endif %}
-                      <span class="price">{{excel_entry.Цена}} р.</span>
+                      {% if beverage_dict.Сорт %}Сорт винограда - {{beverage_dict.Сорт}}<br/>{% endif %}
+                      <span class="price">{{beverage_dict.Цена}} р.</span>
                     </p>
                   </div>
                 </div>
@@ -147,7 +147,7 @@
         <div class="row justify-content-center text-center align-items-center">
           <div class="col-md-8">
             <h2 style="font-size: 3rem;">проверено временем</h2>
-            <span class="sub-title" style="font-size: 2.5rem;">Уже {{company_string}} с вами</span>
+            <span class="sub-title" style="font-size: 2.5rem;">Уже {{company_age_string}} с вами</span>
           </div>
         </div>
       </div>

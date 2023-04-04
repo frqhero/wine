@@ -50,8 +50,8 @@ def main():
     wine_entries = get_wine_entries()
 
     rendered_page = template.render(
-        company_string=company_age_string,
-        categories=wine_entries
+        company_age_string=company_age_string,
+        wine_entries=wine_entries
     )
 
     with open('index.html', 'w', encoding="utf8") as file:
