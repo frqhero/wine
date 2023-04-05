@@ -116,21 +116,21 @@
             </p>
           </div>
         </div>
-        {% for category_title, beverages_list in wine_entries.items() %}
+        {% for category_title, drinks in wine_entries.items() %}
           <div class="col-12 section-title text-center mb-5">
             <h2 class="d-block">{{category_title}}</h2>
           </div>
           <div class="row">
-            {% for beverage_dict in beverages_list %}
+            {% for drink in drinks %}
               <div class="col-lg-4 mb-5 col-md-6">
                 <div class="wine_v_1 text-center pb-4 pt-5">
-                  <img src="images/{{beverage_dict.Картинка}}" alt="Image" class="img-fluid">
-                  {% if beverage_dict.Акция %}<img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">{% endif %}
+                  <img src="images/{{drink.Картинка}}" alt="Image" class="img-fluid">
+                  {% if drink.Акция %}<img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">{% endif %}
                   <div>
-                    <h3 class="heading mt-3 mb-3 text-dark">{{beverage_dict.Название}}</h3>
+                    <h3 class="heading mt-3 mb-3 text-dark">{{drink.Название}}</h3>
                     <p>
-                      {% if beverage_dict.Сорт %}Сорт винограда - {{beverage_dict.Сорт}}<br/>{% endif %}
-                      <span class="price">{{beverage_dict.Цена}} р.</span>
+                      {% if drink.Сорт %}Сорт винограда - {{drink.Сорт}}<br/>{% endif %}
+                      <span class="price">{{drink.Цена}} р.</span>
                     </p>
                   </div>
                 </div>
