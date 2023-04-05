@@ -20,10 +20,9 @@ def get_word(company_age):
         return 'лет'
 
 
-def get_wine_entries():
-    wine_table = os.getenv('WINE_TABLE')
+def get_wine_entries(source_table_path):
     wines = pandas.read_excel(
-        wine_table,
+        source_table_path,
         sheet_name='Лист1',
         keep_default_na=False
     ).to_dict(orient='records')
@@ -47,7 +46,9 @@ def main():
     company_age = str(current_year - foundation_date)
     word = get_word(company_age)
     company_age_string = f'{company_age} {word}'
-    wine_entries = get_wine_entries()
+
+    source_table_path = os.getenv('source_table_path')
+    wine_entries = get_wine_entries(source_table_path)
 
     rendered_page = template.render(
         company_age_string=company_age_string,

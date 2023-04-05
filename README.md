@@ -19,7 +19,7 @@ pip install -r requirements.txt
 ```
 - Создайте в корне .env файл
 ```
-echo "WINE_TABLE=wine3.xlsx" > .env
+echo "SOURCE_TABLE_PATH=wine.xlsx" > .env
 ```
 - Запустите сайт командой
 ```
