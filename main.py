@@ -34,6 +34,7 @@ def get_wine_entries(source_table_path):
 
 
 def main():
+    load_dotenv()
     env = Environment(
         loader=FileSystemLoader('.'),
         autoescape=select_autoescape(['html', 'xml'])
@@ -63,5 +64,4 @@ def main():
 
 
 if __name__ == '__main__':
-    load_dotenv()
     main()
